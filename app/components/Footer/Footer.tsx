@@ -35,7 +35,7 @@ const Footer = () => {
             Audiophile is an all in one stop to fulfill your audio needs. We're
             a small team of music lovers and sound specialists who are devoted
             to helping you get the most out of personal audio. Come and visit
-            our demo facility - we’re open 7 days a week.
+            our demo facility - we are open 7 days a week.
           </p>
 
           <div className="flex items-center gap-x-[16px] max-h-[24px]">
