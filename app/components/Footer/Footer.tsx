@@ -32,7 +32,7 @@ const Footer = () => {
         </div>
         <div className="flex items-end justify-between mb-[56px]">
           <p className="text-white/[.5] text-[15px] leading-[25px] font-medium max-w-[530px]">
-            Audiophile is an all in one stop to fulfill your audio needs. We're
+            Audiophile is an all in one stop to fulfill your audio needs. We are
             a small team of music lovers and sound specialists who are devoted
             to helping you get the most out of personal audio. Come and visit
             our demo facility - we are open 7 days a week.
