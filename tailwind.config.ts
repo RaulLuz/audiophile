@@ -8,13 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        "primary": 'rgb(var(--primary),<alpha-value>)',
+        "secondary": 'rgb(var(--secondary),<alpha-value>)',
+        "primary-light": 'rgb(var(--primary-light),<alpha-value>)',
+        "grey": 'rgb(var(--grey),<alpha-value>)',
+        "light-grey": 'rgb(var(--light-grey),<alpha-value>)',
+        "white": 'rgb(var(--white),<alpha-value>)',
+        "black": 'rgb(var(--black),<alpha-value>)',
       },
     },
   },
-  plugins: [],
+  variants: {
+    fill: ['hover', 'focus'],
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    // ...
+  ],
 };
 export default config;
