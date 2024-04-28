@@ -12,8 +12,8 @@ const CategoriesSection = ({ products }: { products: Product[] }) => {
 
   return (
     <section className="flex items-center justify-between max-w-[1110px] mx-auto mt-[200px] mb-[168px]">
-      {sortedCategories.map((category) => (
-        <CategoryCard key={category} category={category} />
+      {sortedCategories.map((category, index) => (
+        <CategoryCard key={category} category={category} index={index}/>
       ))}
     </section>
   );

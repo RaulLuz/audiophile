@@ -2,7 +2,7 @@ import { Product } from "../../types/products";
 import fetchProducts from "../../utils/fetchProducts";
 import ProductActions from "./ProductActions";
 import ProductFeatures from "./ProductFeatures";
-import ProductGallery from "./ProductGallerys";
+import ProductGallery from "./ProductGalleries";
 import ProductRelated from "./ProductRelated";
 
 const ProductContent = async ({ slug }: { slug: string }) => {

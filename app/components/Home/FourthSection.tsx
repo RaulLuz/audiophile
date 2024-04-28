@@ -1,8 +1,21 @@
+'use client'
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 const FourthSection = () => {
   return (
-    <section className="max-w-[1110px] mx-auto bg-[url('/assets/home/desktop/image-speaker-zx7.jpg')] w-full h-[320px] rounded-[8px] pl-[95px] flex items-center mb-[48px]">
+    <motion.section
+    initial={{ opacity: 0, translateX: 50 }}
+    whileInView={{ opacity: 1, translateX: 0 }}
+    transition={{
+      duration: 0.3,
+      type: "spring",
+      stiffness: 260,
+      damping: 20,
+    }}
+    viewport={{ once: true, margin: "0px 0px -150px 0px" }} 
+    className="max-w-[1110px] mx-auto bg-[url('/assets/home/desktop/image-speaker-zx7.jpg')] w-full h-[320px] rounded-[8px] pl-[95px] flex items-center mb-[48px]">
       <div>
         <div className="text-[28px] font-bold uppercase text-black tracking-[2px] mb-[32px]">
           ZX7 Speaker
@@ -14,7 +27,7 @@ const FourthSection = () => {
           See Product
         </Link>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
