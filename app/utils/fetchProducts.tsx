@@ -1,9 +1,9 @@
 import { promises as fs } from "fs";
 
 export default async function fetchProducts() {
-  const res = await fs.readFile(process.cwd() + "/data.json", "utf8");
+  const res = await fetch('https://audiophile-nu-six.vercel.app/data.json');
 
-  const data = JSON.parse(res);
+  const data = await res.json()
 
   return data;
 }
