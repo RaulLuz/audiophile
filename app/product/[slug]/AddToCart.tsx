@@ -1,7 +1,6 @@
 import QuantitySelector from "@/app/components/QuantitySelector";
 import { useStore } from "@/app/context/StoreContext";
 import { IProductInCart, IProduct } from "@/app/types/products";
-import { useState } from "react";
 
 const AddToCart = ({ product }: { product: IProduct }) => {
   const { setProductsInCart, productsInCart, quantity } =
@@ -23,7 +22,7 @@ const AddToCart = ({ product }: { product: IProduct }) => {
 
   return (
     <div className="flex items-center gap-x-[16px]">
-      <QuantitySelector isInsideCart={false} />
+      <QuantitySelector isInsideCart={false} product={product} />
 
       <button
         onClick={handleAddProductToCart}

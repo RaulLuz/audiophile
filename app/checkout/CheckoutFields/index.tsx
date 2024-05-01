@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import PaymentDetails from "./PaymentDetails";
 import { fields } from "./fields";
 
@@ -9,7 +10,7 @@ const CheckoutFields = () => {
       </h2>
 
       {fields.map((field) => (
-        <div className="mb-[53px]">
+        <div key={field.title} className="mb-[53px]">
           <div className="font-bold text-[13px] text-primary tracking-[.93px] leading-[25px] uppercase mb-[16px]">
             {field.title}
           </div>
@@ -17,6 +18,7 @@ const CheckoutFields = () => {
           <div className="flex flex-wrap items-center gap-x-[16px] gap-y-[24px]">
             {field.input.map((input) => (
               <div
+                key={input.id}
                 className={`${
                   input.id === "address" ? "w-full" : ""
                 } flex flex-col`}

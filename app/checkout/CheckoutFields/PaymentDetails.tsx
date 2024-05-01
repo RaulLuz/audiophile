@@ -21,6 +21,7 @@ const PaymentDetails = () => {
       >
         {paymentMethods.map((method) => (
           <button
+            key={method.id}
             onClick={() => setSelectedMethod(method.id)}
             className={`border ${
               selectedMethod === method.id
@@ -37,7 +38,7 @@ const PaymentDetails = () => {
                 } w-[10px] h-[10px] rounded-full bg-primary transition transition-300`}
               ></div>
             </div>
-            <div>{method.name}</div>
+            <div className="font-bold text-[14px] -tracking-[.25px] text-black">{method.name}</div>
           </button>
         ))}
       </div>
@@ -45,6 +46,7 @@ const PaymentDetails = () => {
         <div className="w-full flex gap-x-[16px]">
           {eMoneyFields.map((field) => (
             <div
+              key={field.id}
               className={`${
                 field.id === "address" ? "w-full" : ""
               } flex flex-col`}

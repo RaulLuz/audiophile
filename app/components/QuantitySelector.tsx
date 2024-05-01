@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { useStore } from "../context/StoreContext";
 import { IQuantitySelector } from "../types/QuantitySelector";
+import { IProductInCart } from "../types/products";
 
-const QuantitySelector = ({ isInsideCart, inputQuantity }: IQuantitySelector) => {
-  const { quantity, setQuantity } = useStore();
-  const [finalQuantity, setFinalQuantity] = useState(inputQuantity);
+const QuantitySelector = ({ isInsideCart, inputQuantity, product }: IQuantitySelector) => {
+  const { quantity, setQuantity, setProductsInCart, productsInCart } = useStore();
+  const currentProduct = productsInCart.find((item) => item.product.id === product.id);
 
   const handleQuantityChange = (operation: number) => {
-    if (isInsideCart && finalQuantity) {
-      setFinalQuantity(finalQuantity + operation);
-
-      console.log({finalQuantity})
+    if (isInsideCart) {
+      setProductsInCart((prev: IProductInCart[]) => {
+        if (prev.some((item) => item.product.id === product.id)) {
+          return prev.map((prevProduct) => {
+            return { ...prevProduct, quantity: prevProduct.quantity + operation };
+          });
+        }
+        return [...prev, { product, quantity: operation }];
+      })
       
       return;
     }
@@ -37,7 +43,7 @@ const QuantitySelector = ({ isInsideCart, inputQuantity }: IQuantitySelector) =>
         -
       </button>
       <div className="font-bold text-[13px] text-black tracking-[1px]">
-        {isInsideCart ? finalQuantity : quantity}
+        {isInsideCart ? currentProduct?.quantity : quantity}
       </div>
       <button
         onClick={() => handleQuantityChange(1)}

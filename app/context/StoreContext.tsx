@@ -1,14 +1,23 @@
 "use client";
-import { createContext, ReactNode, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { IStoreContext, IStoreContextProvider } from "../types/StoreContext";
 import { IProductInCart } from "../types/products";
+import getStorageProducts from "../utils/getStorageProducts";
 
 export const StoreContext = createContext({} as IStoreContext);
 
 export function StoreContextProvider({ children }: IStoreContextProvider) {
-  const [productsInCart, setProductsInCart] = useState<IProductInCart[]>([]);
+
+
+  const [productsInCart, setProductsInCart] = useState<IProductInCart[]>(getStorageProducts());
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+    localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
+  }, [productsInCart]);
+
+  console.log({productsInCart, getStorageProducts})
 
   return (
     <StoreContext.Provider

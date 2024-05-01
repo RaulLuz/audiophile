@@ -2,6 +2,7 @@ import { IProduct, IProductInCart } from "@/app/types/products";
 import Image from "next/image";
 import Link from "next/link";
 import QuantitySelector from "../QuantitySelector";
+import { useState, useEffect } from "react";
 
 const CartProduct = ({
   product,
@@ -12,6 +13,16 @@ const CartProduct = ({
   quantity: number;
   isInsideCheckout: boolean;
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <div className="flex items-center mb-[24px] justify-between">
       <div className="flex items-center">
@@ -34,7 +45,11 @@ const CartProduct = ({
       {isInsideCheckout ? (
         <div className="-mt-[27px]">x{quantity}</div>
       ) : (
-        <QuantitySelector isInsideCart inputQuantity={quantity} />
+        <QuantitySelector
+          isInsideCart
+          inputQuantity={quantity}
+          product={product}
+        />
       )}
     </div>
   );

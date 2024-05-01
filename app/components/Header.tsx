@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useStore } from "../context/StoreContext";
+import { useState, useEffect } from "react";
 
 const menuItems = ["home", "headphones", "speakers", "earphones"];
 
@@ -23,6 +24,15 @@ const getOptions = (delay: number) => {
 
 const Header = () => {
   const { productsInCart, setIsCartOpen, isCartOpen } = useStore();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <header className="bg-secondary relative z-10">

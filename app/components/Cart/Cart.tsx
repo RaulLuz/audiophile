@@ -1,16 +1,27 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useStore } from "../../context/StoreContext";
 import CartProduct from "./CartProduct";
+import Link from "next/link";
 
 const Cart = () => {
   const { productsInCart, setProductsInCart, isCartOpen, setIsCartOpen } =
     useStore();
+  const [isMounted, setIsMounted] = useState(false);
 
   const handleRemoveAll = () => {
     setProductsInCart([]);
     setIsCartOpen(false);
   };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>
@@ -48,9 +59,11 @@ const Cart = () => {
           </span>
           <div className="font-bold text-[18px] text-black">$ 5,396</div>
         </div>
-        <button className="bg-primary text-white font-bold uppercase tracking-[1px] text-[13px] w-full h-[48px] hover:bg-primary-light transition duration-200">
-          Checkout
-        </button>
+        <Link href={"/checkout"} onClick={() => setIsCartOpen(false)}>
+          <button className="bg-primary text-white font-bold uppercase tracking-[1px] text-[13px] w-full h-[48px] hover:bg-primary-light transition duration-200">
+            Checkout
+          </button>
+        </Link>
       </div>
       <div
         className={`${
