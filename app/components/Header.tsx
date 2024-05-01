@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useStore } from "../context/StoreContext";
 
 const menuItems = ["home", "headphones", "speakers", "earphones"];
 
@@ -21,8 +22,10 @@ const getOptions = (delay: number) => {
 };
 
 const Header = () => {
+  const { productsInCart, setIsCartOpen, isCartOpen } = useStore();
+
   return (
-    <header className="bg-secondary">
+    <header className="bg-secondary relative z-10">
       <div className="border-b border-white border-opacity-20 max-w-[1110px] mx-auto flex justify-between items-center relative py-[35px] ">
         <motion.div {...getOptions(0)}>
           <Link href="/">
@@ -49,13 +52,14 @@ const Header = () => {
           ))}
         </ul>
 
-        <motion.button {...getOptions(5)}>
+        <motion.button {...getOptions(5)} className="relative" onClick={() => setIsCartOpen(!isCartOpen)}>
           <Image
-            src="/svg/cart.svg"
+            src="/svg/cart.svg" 
             alt="Minicart Icon"
             width={23.33}
             height={20}
           />
+          <span className="bg-primary rounded-full w-4 h-4 flex items-center justify-center text-white text-[10px] absolute -top-[7px] -right-[7px]">{productsInCart.length}</span>
         </motion.button>
       </div>
     </header>

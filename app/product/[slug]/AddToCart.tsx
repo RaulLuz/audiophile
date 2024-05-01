@@ -1,22 +1,35 @@
+import QuantitySelector from "@/app/components/QuantitySelector";
+import { useStore } from "@/app/context/StoreContext";
+import { IProductInCart, IProduct } from "@/app/types/products";
 import { useState } from "react";
 
-const AddToCart = () => {
-  const [quantity, setQuantity] = useState(0);
+const AddToCart = ({ product }: { product: IProduct }) => {
+  const { setProductsInCart, productsInCart, quantity } =
+    useStore();
 
-  const handleQuantityChange = (operation: string) => {
-    if (operation === "add") setQuantity(quantity + 1);
-    if (operation === "remove" && quantity > 0) setQuantity(quantity - 1);
+  const handleAddProductToCart = () => {
+    setProductsInCart((prev: IProductInCart[]) => {
+      if (prev.some((item) => item.product.id === product.id)) {
+        return prev.map((prevProduct) => {
+          return { ...prevProduct, quantity: prevProduct.quantity + quantity };
+        });
+      }
+
+      return [...prev, { product, quantity }];
+    });
   };
+
+  console.log({ productsInCart });
 
   return (
     <div className="flex items-center gap-x-[16px]">
-      <div className="w-[120px] h-[48px] bg-grey flex items-center justify-between px-[5px]">
-        <button onClick={() => handleQuantityChange("remove")} className="font-bold text-[13px] tracking-[1px] text-black/[.25] w-[33px] h-[48px]">-</button>
-        <div className="font-bold text-[13px] text-black tracking-[1px]">{quantity}</div>
-        <button onClick={() => handleQuantityChange("add")} className="font-bold text-[13px] tracking-[1px] text-black/[.25] w-[33px] h-[48px]">+</button>
-      </div>
+      <QuantitySelector isInsideCart={false} />
 
-      <button className="bg-primary text-white font-bold uppercase tracking-[1px] text-[13px] w-[160px] h-[48px] hover:bg-primary-light transition duration-200">
+      <button
+        onClick={handleAddProductToCart}
+        disabled={quantity === 0}
+        className="bg-primary text-white font-bold uppercase tracking-[1px] text-[13px] w-[160px] h-[48px] hover:bg-primary-light transition duration-200 disabled:bg-grey "
+      >
         Add to cart
       </button>
     </div>

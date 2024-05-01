@@ -1,16 +1,14 @@
 "use client";
 
-import { Product } from "@/app/types/products";
-import { useRouter } from "next/navigation";
+import { IProduct } from "@/app/types/products";
 import Image from "next/image";
 import AddToCart from "./AddToCart";
+import GoBackButton from "@/app/components/GoBackButton";
 
-const ProductActions = ({ product }: { product: Product }) => {
-  const router = useRouter();
-
+const ProductActions = ({ product }: { product: IProduct }) => {
   return (
     <section className="mb-[160px]">
-      <button onClick={() => router.back()} className="mb-[56px] mt-[79px] text-[15px] leading-[25px] font-medium text-black/[.5]">Go back</button>
+      <GoBackButton />
       <div className="flex items-center justify-between mb-[160px]`">
         <Image
           src={product.categoryImage.desktop}
@@ -31,9 +29,11 @@ const ProductActions = ({ product }: { product: Product }) => {
           <p className="opacity-50 leading-[25px] text-[15px] mb-[32px] text-black">
             {product.description}
           </p>
-          <div className="font-bold text-[18px] tracking-[1.29px] text-black mb-[47px]">$ {product.price.toLocaleString("en-US", { currency: "USD" })}</div>
+          <div className="font-bold text-[18px] tracking-[1.29px] text-black mb-[47px]">
+            $ {product.price.toLocaleString("en-US", { currency: "USD" })}
+          </div>
 
-          <AddToCart />
+          <AddToCart product={product} />
         </div>
       </div>
     </section>
