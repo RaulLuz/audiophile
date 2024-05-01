@@ -3,7 +3,7 @@ import { useStore } from "../context/StoreContext";
 import { IQuantitySelector } from "../types/QuantitySelector";
 import { IProductInCart } from "../types/products";
 
-const QuantitySelector = ({ isInsideCart, inputQuantity, product }: IQuantitySelector) => {
+const QuantitySelector = ({ isInsideCart, product }: IQuantitySelector) => {
   const { quantity, setQuantity, setProductsInCart, productsInCart } = useStore();
   const currentProduct = productsInCart.find((item) => item.product.id === product.id);
 

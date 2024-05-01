@@ -1,12 +1,12 @@
 "use client";
 
-import { Product } from "@/app/types/products";
+import { IProduct } from "@/app/types/products";
 import React from "react";
 import InfoCard from "../InfoCard";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const MainSection = ({ products }: { products: Product[] }) => {
+const MainSection = ({ products }: { products: IProduct[] }) => {
   const mainProduct = products.find((product) => product.id === 4);
 
   if (!mainProduct) return;

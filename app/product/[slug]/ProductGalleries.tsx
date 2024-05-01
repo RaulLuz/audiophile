@@ -1,6 +1,6 @@
-import { Product } from "@/app/types/products";
+import { IProduct } from "@/app/types/products";
 
-const ProductGallery = ({ product }: { product: Product }) => {
+const ProductGallery = ({ product }: { product: IProduct }) => {
   const firstImg = product.gallery.first.desktop;
   const secondImg = product.gallery.second.desktop;
   const thirdImg = product.gallery.third.desktop;

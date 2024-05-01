@@ -1,8 +1,8 @@
-import { Product } from '@/app/types/products'
+import { IProduct } from '@/app/types/products'
 import React from 'react'
 import Markdown from 'react-markdown'
 
-const ProductFeatures = ({ product }: { product: Product }) => {
+const ProductFeatures = ({ product }: { product: IProduct }) => {
   return (
     <section className='flex justify-between mb-[160px]'>
         <div>

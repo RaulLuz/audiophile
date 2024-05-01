@@ -1,4 +1,4 @@
-import { Product } from "../../types/products";
+import { IProduct } from "../../types/products";
 import fetchProducts from "../../utils/fetchProducts";
 import ProductActions from "./ProductActions";
 import ProductFeatures from "./ProductFeatures";
@@ -6,7 +6,7 @@ import ProductGallery from "./ProductGalleries";
 import ProductRelated from "./ProductRelated";
 
 const ProductContent = async ({ slug }: { slug: string }) => {
-  const products: Product[] = await fetchProducts();
+  const products: IProduct[] = await fetchProducts();
   const productToRender = products.filter(
     (product) => product.slug === slug
   )[0];

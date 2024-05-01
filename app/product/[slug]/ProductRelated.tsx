@@ -1,8 +1,8 @@
-import { Product } from "@/app/types/products";
+import { IProduct } from "@/app/types/products";
 import Image from "next/image";
 import Link from "next/link";
 
-const ProductRelated = ({ product }: { product: Product }) => {
+const ProductRelated = ({ product }: { product: IProduct }) => {
   const relatedProducts = product.others;
 
   return (

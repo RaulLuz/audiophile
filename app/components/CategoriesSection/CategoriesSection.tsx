@@ -1,7 +1,7 @@
-import { Product } from "@/app/types/products";
+import { IProduct } from "@/app/types/products";
 import CategoryCard from "./CategoryCard";
 
-const CategoriesSection = ({ products }: { products: Product[] }) => {
+const CategoriesSection = ({ products }: { products: IProduct[] }) => {
   const correctOrder = ["headphones", "speakers", "earphones"];
 
   const categories = [...new Set(products.map((product) => product.category))];

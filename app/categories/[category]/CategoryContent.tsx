@@ -1,10 +1,10 @@
 import InfoCard from "../../components/InfoCard";
-import { Product } from "../../types/products";
+import { IProduct } from "../../types/products";
 import fetchProducts from "../../utils/fetchProducts";
 import Image from "next/image";
 
 const CategoryContent = async ({ category }: { category: string }) => {
-  const products: Product[] = await fetchProducts();
+  const products: IProduct[] = await fetchProducts();
   const productsToRender = products.filter(
     (product) => product.category === category
   );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { paymentMethods, eMoneyFields } from "./fields";
+import Image from "next/image";
 
 const PaymentDetails = () => {
   const [selectedMethod, setSelectedMethod] = useState("");
@@ -27,7 +28,7 @@ const PaymentDetails = () => {
               selectedMethod === method.id
                 ? "border-primary"
                 : "border-[#CFCFCF]"
-            } rounded-[8px] h-[56px] w-full flex items-center pl-[16px] transition transition-300`}
+            } rounded-[8px] h-[56px] w-full flex items-center pl-[16px] hover:border-primary transition transition-300`}
           >
             <div className="w-[20px] h-[20px] border border-[#CFCFCF] rounded-full mr-[16px] flex items-center justify-center">
               <div
@@ -38,11 +39,13 @@ const PaymentDetails = () => {
                 } w-[10px] h-[10px] rounded-full bg-primary transition transition-300`}
               ></div>
             </div>
-            <div className="font-bold text-[14px] -tracking-[.25px] text-black">{method.name}</div>
+            <div className="font-bold text-[14px] -tracking-[.25px] text-black">
+              {method.name}
+            </div>
           </button>
         ))}
       </div>
-      {selectedMethod === "e-money" && (
+      {selectedMethod === "e-money" ? (
         <div className="w-full flex gap-x-[16px]">
           {eMoneyFields.map((field) => (
             <div
@@ -62,10 +65,24 @@ const PaymentDetails = () => {
                 id={field.id}
                 className={` h-[56px] ${
                   field.id === "address" ? "w-full" : "w-[309px]"
-                } border border-[#CFCFCF] rounded-[8px] px-[24px] text-[14px] font-bold text-black/70 -tracking-[.25px]`}
+                } border border-[#CFCFCF] rounded-[8px] px-[24px] text-[14px] font-bold text-black -tracking-[.25px] outline-primary`}
               />
             </div>
           ))}
+        </div>
+      ) : (
+        <div className="flex items-center gap-x-[32px] mt-[34px]">
+          <Image
+            src="/svg/checkout.svg"
+            alt="Checkout"
+            width={48}
+            height={48}
+          />
+          <p className="text-[15px] text-black/50 leading-[25px] font-medium">
+            The Cash on Delivery option enables you to pay in cash when our
+            delivery courier arrives at your residence. Just make sure your
+            address is correct so that your order will not be cancelled.
+          </p>
         </div>
       )}
     </div>

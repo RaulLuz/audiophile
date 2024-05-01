@@ -34,7 +34,7 @@ const CheckoutFields = () => {
                   id={input.id}
                   className={` h-[56px] ${
                     input.id === "address" ? "w-full" : "w-[309px]"
-                  } border border-[#CFCFCF] rounded-[8px] px-[24px] text-[14px] font-bold text-black/70 -tracking-[.25px]`}
+                  } border border-[#CFCFCF] rounded-[8px] px-[24px] text-[14px] font-bold text-black -tracking-[.25px] outline-primary`}
                 />
               </div>
             ))}
