@@ -8,10 +8,12 @@ const CartProduct = ({
   product,
   quantity,
   isInsideCheckout,
+  isInsideModal
 }: {
   product: IProduct;
   quantity: number;
   isInsideCheckout: boolean;
+  isInsideModal: boolean;
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -29,8 +31,8 @@ const CartProduct = ({
         <Image
           src={product.categoryImage.desktop}
           alt={product.name}
-          width={64}
-          height={64}
+          width={isInsideModal ? 45 : 64}
+          height={isInsideModal ? 45 : 64}
           className="rounded-[8px]"
         />
         <Link href={`/product/${product.slug}`} className="ml-[16px]">

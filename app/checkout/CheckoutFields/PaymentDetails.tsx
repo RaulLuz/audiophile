@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { paymentMethods, eMoneyFields } from "./fields";
 import Image from "next/image";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-const PaymentDetails = () => {
+const PaymentDetails = ({ errors, register, formDataSchema }: any) => {
   const [selectedMethod, setSelectedMethod] = useState("");
+  type formData = z.infer<typeof formDataSchema>;
+
 
   return (
     <div>
@@ -24,6 +29,7 @@ const PaymentDetails = () => {
           <button
             key={method.id}
             onClick={() => setSelectedMethod(method.id)}
+            type="button"
             className={`border ${
               selectedMethod === method.id
                 ? "border-primary"
@@ -63,9 +69,17 @@ const PaymentDetails = () => {
               <input
                 type="text"
                 id={field.id}
-                className={` h-[56px] ${
-                  field.id === "address" ? "w-full" : "w-[309px]"
-                } border border-[#CFCFCF] rounded-[8px] px-[24px] text-[14px] font-bold text-black -tracking-[.25px] outline-primary`}
+                {...register(field.id as keyof formData, { required: true })}
+                  className={`h-[56px] ${
+                    field.id === "address" ? "w-full" : "w-[309px]"
+                  } 
+                  border border-[#CFCFCF]
+                  ${
+                    errors[field.id as keyof formData]
+                      ? "border-[#CD2C2C] outline-[#CD2C2C]"
+                      : ""
+                  }
+                  rounded-[8px] px-[24px] text-[14px] font-bold text-black -tracking-[.25px] outline-primary`}
               />
             </div>
           ))}

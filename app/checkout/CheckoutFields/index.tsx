@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import PaymentDetails from "./PaymentDetails";
 import { fields } from "./fields";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+const CheckoutFields = ({ errors, register, formDataSchema }: any) => {
+  type formData = z.infer<typeof formDataSchema>;
 
-const CheckoutFields = () => {
   return (
     <div className="p-[48px] pt-[54px] rounded-[8px] bg-white max-w-[730px]">
       <h2 className="text-[32px] font-bold tracking-[1.14px] leading-[36px] uppercase mb-[41px]">
@@ -23,18 +27,37 @@ const CheckoutFields = () => {
                   input.id === "address" ? "w-full" : ""
                 } flex flex-col`}
               >
-                <label
-                  htmlFor={input.id}
-                  className="font-bold text-[12px] -tracking-[.21px] mb-[9px]"
-                >
-                  {input.label}
-                </label>
+                <div className="flex justify-between">
+                  <label
+                    htmlFor={input.id}
+                    className={`font-bold text-[12px] -tracking-[.21px] mb-[9px]  ${
+                      errors[input.id as keyof formData]
+                        ? "text-[#CD2C2C]"
+                        : "text-black"
+                    }`}
+                  >
+                    {input.label}
+                  </label>
+                  {errors[input.id as keyof formData] && (
+                    <span className="text-[#CD2C2C] text-[12px] -tracking-[.21px] font-medium">
+                      {errors[input.id as keyof formData]?.message}
+                    </span>
+                  )}
+                </div>
                 <input
                   type="text"
                   id={input.id}
-                  className={` h-[56px] ${
+                  {...register(input.id as keyof formData, { required: true })}
+                  className={`h-[56px] ${
                     input.id === "address" ? "w-full" : "w-[309px]"
-                  } border border-[#CFCFCF] rounded-[8px] px-[24px] text-[14px] font-bold text-black -tracking-[.25px] outline-primary`}
+                  } 
+                  border 
+                  ${
+                    errors[input.id as keyof formData]
+                      ? "border-[#CD2C2C] outline-[#CD2C2C]"
+                      : "border-[#CFCFCF] outline-primary"
+                  }
+                  rounded-[8px] px-[24px] text-[14px] font-bold text-black -tracking-[.25px]`}
                 />
               </div>
             ))}
@@ -42,7 +65,11 @@ const CheckoutFields = () => {
         </div>
       ))}
 
-      <PaymentDetails />
+      <PaymentDetails
+        register={register}
+        errors={errors}
+        formDataSchema={formDataSchema}
+      />
     </div>
   );
 };

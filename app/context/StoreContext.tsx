@@ -7,8 +7,6 @@ import getStorageProducts from "../utils/getStorageProducts";
 export const StoreContext = createContext({} as IStoreContext);
 
 export function StoreContextProvider({ children }: IStoreContextProvider) {
-
-
   const [productsInCart, setProductsInCart] = useState<IProductInCart[]>(getStorageProducts());
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [quantity, setQuantity] = useState(0);

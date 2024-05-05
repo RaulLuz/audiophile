@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer/Footer";
 import Providers from "./providers";
 import Cart from "./components/Cart/Cart";
-
+import NextTopLoader from "nextjs-toploader";
 const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata: Metadata = {
@@ -22,12 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={manrope.className}>
         <Providers>
+          <NextTopLoader color="#d87d4a" height={1}/>
           <Header />
           {children}
           <Footer />
-          {/* <div className="max-w-[1110px] mx-auto relative"> */}
-            <Cart />
-          {/* </div> */}
+          <Cart />
         </Providers>
       </body>
     </html>

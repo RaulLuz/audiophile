@@ -1,7 +1,9 @@
-export default async function fetchProducts() {
-  const res = await fetch('https://raw.githubusercontent.com/RaulLuz/audiophile/master/public/data.json?token=GHSAT0AAAAAACREJ7TF5KYWKDCA4UXPAJE2ZRSV5XQ');
+import { promises as fs } from 'fs';
 
-  const data = await res.json()
+export default async function fetchProducts() {
+  const res = await fs.readFile(process.cwd() + '/public/data.json', 'utf8');
+
+  const data = JSON.parse(res);
 
   return data.products;
 }

@@ -33,6 +33,7 @@ const Summary = () => {
           product={item.product}
           quantity={item.quantity}
           isInsideCheckout
+          isInsideModal={false}
         />
       ))}
       <div className="flex justify-between my-[8px]">
