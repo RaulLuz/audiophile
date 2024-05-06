@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
 import PaymentDetails from "./PaymentDetails";
 import { fields } from "./fields";
-import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+
 const CheckoutFields = ({ errors, register, formDataSchema }: any) => {
   type formData = z.infer<typeof formDataSchema>;
 

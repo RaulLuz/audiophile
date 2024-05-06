@@ -16,13 +16,13 @@ const formDataSchema = z.object({
   "zip-code": z.string().min(3, { message: "This field is required" }),
   city: z.string().min(3, { message: "This field is required" }),
   country: z.string().min(3, { message: "This field is required" }),
-  // 'e-money-number': z.string().min(3, { message: "This field is required" }).optional(),
-  // 'e-money-pin': z.string().min(3, { message: "This field is required" }).optional()
+  'e-money-number': z.string().optional(),
+  'e-money-pin': z.string().optional()
 });
 
 export type formData = z.infer<typeof formDataSchema>;
 
-const page = () => {
+const Checkout = () => {
   const {
     register,
     handleSubmit,
@@ -59,4 +59,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Checkout;

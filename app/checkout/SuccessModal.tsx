@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IProductInCart } from "../types/products";
 import getStorageProducts from "../utils/getStorageProducts";
 import CartProduct from "../components/Cart/CartProduct";
@@ -14,8 +14,32 @@ const SuccessModal = () => {
   const total = prices.reduce((a, b) => a + b, 0);
   const grandTotal = total + 1129;
   const remainingProducts = productsInCart.length - 1;
-  const blackBackgroundHeight =
-    (isOpen ? productsInCart.length : remainingProducts) * 50 + 96;
+
+  const [grandTotalHeight, setGrandTotalHeight] = useState(0);
+  const grandTotalHeightRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      const productsElement = document.querySelector(".left-div");
+      if (productsElement) {
+        setGrandTotalHeight(productsElement.clientHeight);
+      }
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (grandTotalHeightRef.current && grandTotalHeight > 0) {
+      grandTotalHeightRef.current.style.height = `${grandTotalHeight}px`;
+    } else if (grandTotalHeightRef.current){
+      grandTotalHeightRef.current.style.height = `auto`;
+    }
+    
+  }, [grandTotalHeight]);
+
+  const handleViewLess = () => {
+    setIsOpen(!isOpen);
+    setGrandTotalHeight(0);
+  };
 
   return (
     <>
@@ -36,7 +60,7 @@ const SuccessModal = () => {
           You will receive an email confirmation shortly.
         </p>
         <div className="flex items-center">
-          <div className="min-h-[140px] w-[246px] bg-[#F1F1F1] p-[24px] pb-0 rounded-[8px] rounded-r-none">
+          <div className="left-div min-h-[140px] w-[246px] bg-[#F1F1F1] p-[24px] pb-0 rounded-[8px] rounded-r-none">
             <div
               className={`${isOpen ? "h-full" : "h-[65px]"} overflow-hidden`}
             >
@@ -52,7 +76,7 @@ const SuccessModal = () => {
             </div>
             {productsInCart.length > 0 && (
               <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={handleViewLess}
                 type="button"
                 className="text-[12px] text-black/50 -tracking-[.21px] font-bold text-center w-full py-[12px] border-t border-black/[8%]"
               >
@@ -63,7 +87,9 @@ const SuccessModal = () => {
             )}
           </div>
           <div
-            className={`h-[${blackBackgroundHeight}px] min-h-[142px] w-[198px] rounded-[8px] rounded-l-none bg-black py-[42px] pl-[32px] flex flex-col justify-end `}
+          
+            ref={grandTotalHeightRef}
+            className={`flex-grow min-h-[142px] w-[198px] rounded-[8px] rounded-l-none bg-black py-[42px] pl-[32px] flex flex-col justify-end`}
           >
             <p className="text-[15px] text-white/50 font-medium mb-[8px] leading-[25px] uppercase">
               Grand total

@@ -49,6 +49,7 @@ const Cart = () => {
                 product={product}
                 quantity={quantity}
                 isInsideCheckout={false}
+                isInsideModal={false}
               />
             );
           })}
