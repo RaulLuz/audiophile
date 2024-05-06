@@ -1,7 +1,5 @@
-import { promises as fs } from 'fs';
-
 export default async function fetchProducts() {
-  const res = await fs.readFile(process.cwd() + '/public/data.json', 'utf8');
+  const res = await fetch('https://raw.githubusercontent.com/RaulLuz/audiophile/master/public/data.json').then(a => a.text())
 
   const data = JSON.parse(res);
 
