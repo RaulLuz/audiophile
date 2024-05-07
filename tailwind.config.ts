@@ -18,6 +18,10 @@ const config: Config = {
         "black": 'rgb(var(--black),<alpha-value>)',
       },
     },
+    screens: {
+      'tablet': {'max': '1220px'},
+      'mobile': {'max': '767px'},
+    }
   },
   variants: {
     fill: ['hover', 'focus'],

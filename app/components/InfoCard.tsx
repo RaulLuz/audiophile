@@ -38,7 +38,7 @@ const InfoCard = ({
     textColor === "text-white" ? "leading-[58px]" : "leading-[44px]";
 
   return (
-    <div className={cardSize}>
+    <div className={`${cardSize} tablet:flex tablet:flex-col tablet:items-center tablet:relative tablet:z-10`}>
       {isNew && (
         <motion.span
           {...getOptions(0)}
@@ -49,13 +49,13 @@ const InfoCard = ({
       )}
       <motion.h2
         {...getOptions(1)}
-        className={`${finalTitleSize} ${textColor} font-bold uppercase tracking-[2px] ${finalTitleLeading} mb-[24px]`}
+        className={`${finalTitleSize} ${textColor} font-bold uppercase tracking-[2px] ${finalTitleLeading} mb-[24px] tablet:text-center`}
       >
         {title}
       </motion.h2>
       <motion.p
         {...getOptions(2)}
-        className={`${textColor} opacity-75 leading-[25px] text-[15px] mb-[40px]`}
+        className={`${textColor} opacity-75 leading-[25px] text-[15px] mb-[40px] tablet:text-center`}
       >
         {description}
       </motion.p>

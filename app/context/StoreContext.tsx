@@ -15,8 +15,6 @@ export function StoreContextProvider({ children }: IStoreContextProvider) {
     localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
   }, [productsInCart]);
 
-  console.log({productsInCart, getStorageProducts})
-
   return (
     <StoreContext.Provider
       value={{

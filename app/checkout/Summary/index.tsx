@@ -20,8 +20,6 @@ const Summary = () => {
     return null;
   }
 
-  console.log({ productsInCart, prices });
-
   return (
     <div className="bg-white p-[32px] rounded-[8px] h-[fit-content] w-full max-w-[350px] sticky top-[20px]">
       <h3 className="font-bold text-[18px] tracking-[1.29px] text-black uppercase mb-[31px]">

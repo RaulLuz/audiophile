@@ -4,28 +4,43 @@ import { IQuantitySelector } from "../types/QuantitySelector";
 import { IProductInCart } from "../types/products";
 
 const QuantitySelector = ({ isInsideCart, product }: IQuantitySelector) => {
-  const { quantity, setQuantity, setProductsInCart, productsInCart } = useStore();
-  const currentProduct = productsInCart.find((item) => item.product.id === product.id);
+  const { quantity, setQuantity, setProductsInCart, productsInCart } =
+    useStore();
+  const currentProductIndex = productsInCart.findIndex(
+    (item) => item.product.id === product.id
+  );
+  const currentProduct = productsInCart[currentProductIndex];
+  const currentQuantity = isInsideCart ? currentProduct?.quantity : quantity;
 
   const handleQuantityChange = (operation: number) => {
     if (isInsideCart) {
       setProductsInCart((prev: IProductInCart[]) => {
-        if (prev.some((item) => item.product.id === product.id)) {
-          return prev.map((prevProduct) => {
-            return { ...prevProduct, quantity: prevProduct.quantity + operation };
-          });
+        console.log('first')
+        if (currentProductIndex !== -1) {
+          const updatedProducts = prev.map((item, index) => {
+            if (index === currentProductIndex) {
+              const updatedQuantity = item.quantity + operation;
+              if (updatedQuantity <= 0) {
+                return null; // Remove o item do array
+              } else {
+                return { ...item, quantity: updatedQuantity };
+              }
+            }
+            return item;
+          }).filter(Boolean); // Remove os itens nulos do array
+          return updatedProducts;
+        } else if (operation === 1) {
+          return [...prev, { product, quantity: 1 }];
         }
-        return [...prev, { product, quantity: operation }];
-      })
-      
-      return;
+        return prev; // Retorna o array original se nenhuma operação for realizada
+      });
     }
-    
+
     if (quantity === 0 && operation === -1) return;
-    
+
     setQuantity(quantity + operation);
   };
-  
+
   return (
     <div
       className={`${
@@ -43,7 +58,7 @@ const QuantitySelector = ({ isInsideCart, product }: IQuantitySelector) => {
         -
       </button>
       <div className="font-bold text-[13px] text-black tracking-[1px]">
-        {isInsideCart ? currentProduct?.quantity : quantity}
+        {currentQuantity}
       </div>
       <button
         onClick={() => handleQuantityChange(1)}

@@ -3,8 +3,7 @@ import { useStore } from "@/app/context/StoreContext";
 import { IProductInCart, IProduct } from "@/app/types/products";
 
 const AddToCart = ({ product }: { product: IProduct }) => {
-  const { setProductsInCart, productsInCart, quantity } =
-    useStore();
+  const { setProductsInCart, productsInCart, quantity } = useStore();
 
   const handleAddProductToCart = () => {
     setProductsInCart((prev: IProductInCart[]) => {
@@ -17,8 +16,6 @@ const AddToCart = ({ product }: { product: IProduct }) => {
       return [...prev, { product, quantity }];
     });
   };
-
-  console.log({ productsInCart });
 
   return (
     <div className="flex items-center gap-x-[16px]">

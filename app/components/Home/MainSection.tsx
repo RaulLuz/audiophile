@@ -13,7 +13,7 @@ const MainSection = ({ products }: { products: IProduct[] }) => {
 
   return (
     <section className="bg-secondary">
-      <div className="max-w-[1110px] mx-auto flex items-center gap-x-[40px]">
+      <div className="max-w-[1110px] mx-auto flex items-center gap-x-[40px] tablet:justify-center">
         <InfoCard
           isNew={true}
           textColor="text-white"
@@ -33,6 +33,7 @@ const MainSection = ({ products }: { products: IProduct[] }) => {
             delay: 3 * 0.1,
             type: "spring",
           }}
+          className="tablet:absolute tablet:top-2/4 tablet:left-2/4 tablet:-translate-x-2/4 tablet:-translate-y-2/4"
         >
           <Image
             src="/images/home-main-product.png"
