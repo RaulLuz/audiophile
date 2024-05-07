@@ -21,7 +21,7 @@ const FourthSection = () => {
           ZX7 Speaker
         </div>
         <Link
-          href="#"
+          href="/product/zx9-speaker"
           className={`text-black font-bold uppercase tracking-[1px] text-[13px] py-[15px] px-[30px] block max-w-[fit-content] border border-black bg-transparent hover:bg-black hover:text-white transition duration-200`}
         >
           See Product

@@ -32,7 +32,7 @@ const Cart = () => {
       <div
         className={`${
           isCartOpen ? "visible opacity-100" : "invisible opacity-0"
-        } w-[377px] rounded-[8px] bg-white absolute top-[129px] right-[165px] z-10 p-[31px] transition transition-200`}
+        } w-[377px] rounded-[8px] bg-white absolute top-[129px] right-[0] z-10 p-[31px] transition transition-200`}
       >
         <div className="flex items-center justify-between mb-[32px]">
           <h3 className="font-bold text-[18px] text-black tracking-[1.29px] uppercase">

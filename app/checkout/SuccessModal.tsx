@@ -60,7 +60,7 @@ const SuccessModal = () => {
           You will receive an email confirmation shortly.
         </p>
         <div className="flex items-center">
-          <div className="left-div min-h-[140px] w-[246px] bg-[#F1F1F1] p-[24px] pb-0 rounded-[8px] rounded-r-none">
+          <div className="left-div min-h-[140px] w-[246px] bg-[#F1F1F1] p-[24px] pb-0 rounded-[8px] rounded-r-none flex flex-col justify-center">
             <div
               className={`${isOpen ? "h-full" : "h-[65px]"} overflow-hidden`}
             >
@@ -74,7 +74,7 @@ const SuccessModal = () => {
                 />
               ))}
             </div>
-            {productsInCart.length > 0 && (
+            {productsInCart.length > 1 && (
               <button
                 onClick={handleViewLess}
                 type="button"
@@ -87,7 +87,6 @@ const SuccessModal = () => {
             )}
           </div>
           <div
-          
             ref={grandTotalHeightRef}
             className={`flex-grow min-h-[142px] w-[198px] rounded-[8px] rounded-l-none bg-black py-[42px] pl-[32px] flex flex-col justify-end`}
           >
