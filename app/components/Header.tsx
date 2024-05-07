@@ -39,7 +39,7 @@ const Header = () => {
     <>
       <header className="bg-secondary relative z-10">
         <div className="border-b border-white border-opacity-20 max-w-[1110px] mx-auto flex justify-between items-center relative py-[35px] ">
-        <Cart />
+          <Cart />
 
           <motion.div {...getOptions(0)}>
             <Link href="/">
