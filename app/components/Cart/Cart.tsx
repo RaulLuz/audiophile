@@ -67,7 +67,10 @@ const Cart = () => {
           </div>
         </div>
         <Link href={"/checkout"} onClick={() => setIsCartOpen(false)}>
-          <button className="bg-primary text-white font-bold uppercase tracking-[1px] text-[13px] w-full h-[48px] hover:bg-primary-light transition duration-200">
+          <button
+            className="bg-primary text-white font-bold uppercase tracking-[1px] text-[13px] w-full h-[48px] hover:bg-primary-light transition duration-200 disabled:bg-grey"
+            disabled={productsInCart.length === 0}
+          >
             Checkout
           </button>
         </Link>
