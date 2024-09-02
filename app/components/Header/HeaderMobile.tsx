@@ -24,11 +24,11 @@ const variants = {
 const variantsOverlay = {
   open: {
     opacity: 0.5,
-    visibility: "visible",
+    visibility: "visible" as "visible",
   },
   closed: {
     opacity: 0,
-    visibility: "hidden",
+    visibility: "visible" as "visible",
   },
 };
 
