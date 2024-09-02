@@ -1,9 +1,17 @@
-'use client'
+"use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const CategoryCard = ({ category, index }: { category: string, index: number }) => {
+const CategoryCard = ({
+  category,
+  index,
+  mobileHeader,
+}: {
+  category: string;
+  index: number;
+  mobileHeader?: boolean;
+}) => {
   const images = {
     headphones: "category-headphones.png",
     speakers: "category-speakers.png",
@@ -26,22 +34,22 @@ const CategoryCard = ({ category, index }: { category: string, index: number }) 
     >
       <Link
         href={`/categories/${category}`}
-        className="w-[350px] h-[204px] bg-grey flex flex-col rounded-[8px] relative items-center justify-end group"
+        className={`w-[350px] h-[204px] tablet:w-[223px] tablet:h-[165px] mobile:w-[327px] mobile:h-[165px] bg-grey flex flex-col rounded-[8px] relative items-center justify-end group`}
       >
         <img
           src={`/images/${images[category as keyof typeof images]}`}
           alt={category}
-          className={`absolute ${
-            category === "earphones" ? "-top-[60px]" : "-top-[75px]"
+          className={`absolute tablet:max-w-[140px] ${
+            category === "earphones" ? "-top-[60px] tablet:-top-[44px]" : "-top-[75px] tablet:-top-[55px]"
           }`}
         />
 
-        <h3 className="uppercase text-[18px] font-bold tracking-[1.29px] text-black mb-[15px]">
+        <h3 className="uppercase text-[18px] font-bold tracking-[1.29px] text-black mb-[15px] tablet:text-[15px]">
           {category}
         </h3>
 
         <div className="flex items-center mb-[30px] transition duration-200 group-hover:text-primary">
-          <div className="uppercase tracking-[1px] font-bold text-[13px] mr-[13px] -mb-[3px]">
+          <div className="uppercase tracking-[1px] font-bold text-[13px] mr-[13px] -mb-[3px] text-[#00000080]">
             Shop
           </div>
           <svg

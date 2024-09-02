@@ -15,19 +15,20 @@ const QuantitySelector = ({ isInsideCart, product }: IQuantitySelector) => {
   const handleQuantityChange = (operation: number) => {
     if (isInsideCart) {
       setProductsInCart((prev: IProductInCart[]) => {
-        console.log('first')
         if (currentProductIndex !== -1) {
-          const updatedProducts = prev.map((item, index) => {
-            if (index === currentProductIndex) {
-              const updatedQuantity = item.quantity + operation;
-              if (updatedQuantity <= 0) {
-                return null; // Remove o item do array
-              } else {
-                return { ...item, quantity: updatedQuantity };
+          const updatedProducts = prev
+            .map((item, index) => {
+              if (index === currentProductIndex) {
+                const updatedQuantity = item.quantity + operation;
+                if (updatedQuantity <= 0) {
+                  return null; // Remove o item do array
+                } else {
+                  return { ...item, quantity: updatedQuantity };
+                }
               }
-            }
-            return item;
-          }).filter(Boolean); // Remove os itens nulos do array
+              return item;
+            })
+            .filter(Boolean); // Remove os itens nulos do array
           return updatedProducts;
         } else if (operation === 1) {
           return [...prev, { product, quantity: 1 }];

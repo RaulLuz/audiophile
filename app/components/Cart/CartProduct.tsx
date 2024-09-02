@@ -4,17 +4,19 @@ import Link from "next/link";
 import QuantitySelector from "../QuantitySelector";
 import { useState, useEffect } from "react";
 
-const CartProduct = ({
-  product,
-  quantity,
-  isInsideCheckout,
-  isInsideModal
-}: {
+interface Props {
   product: IProduct;
   quantity: number;
   isInsideCheckout: boolean;
   isInsideModal: boolean;
-}) => {
+}
+
+const CartProduct = ({
+  product,
+  quantity,
+  isInsideCheckout,
+  isInsideModal,
+}: Props) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {

@@ -53,8 +53,6 @@ const Checkout = () => {
         </div>
       </section>
       {isSubmitSuccessful && <SuccessModal />}
-
-      {/* <SuccessModal /> */}
     </>
   );
 };

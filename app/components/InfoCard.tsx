@@ -30,8 +30,6 @@ const InfoCard = ({
   buttonBgHover,
   href,
 }: InfoCardProps) => {
-  const finalOpacity =
-    newTextColor === "text-primary" ? "opacity-100" : "opacity-50";
   const finalTitleSize =
     textColor === "text-white" ? "text-[56px]" : "text-[40px]";
   const finalTitleLeading =
@@ -42,7 +40,7 @@ const InfoCard = ({
       {isNew && (
         <motion.span
           {...getOptions(0)}
-          className={`tracking-[10px] ${newTextColor} ${finalOpacity} uppercase text-[14px] font-normal mb-[24px] block`}
+          className={`tracking-[10px] ${newTextColor} uppercase text-[14px] font-normal mb-[24px] block`}
         >
           New product
         </motion.span>
@@ -55,7 +53,7 @@ const InfoCard = ({
       </motion.h2>
       <motion.p
         {...getOptions(2)}
-        className={`${textColor} opacity-75 leading-[25px] text-[15px] mb-[40px] tablet:text-center`}
+        className={`${textColor == "text-white" ? "text-[#FFFFFFbf]" : ""} opacity-75 leading-[25px] text-[15px] mb-[40px] tablet:text-center`}
       >
         {description}
       </motion.p>

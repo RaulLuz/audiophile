@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Providers from "./providers";
 import Cart from "./components/Cart/Cart";
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={manrope.className}>
         <Providers>
-          <NextTopLoader color="#d87d4a" height={1}/>
+          <NextTopLoader color="#d87d4a" height={2}/>
           <Header />
           {children}
           <Footer />

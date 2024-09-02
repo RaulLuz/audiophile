@@ -10,12 +10,14 @@ import DescriptiveSection from "./components/DescriptiveSection";
 export default async function Home() {
   const products: IProduct[] = await fetchProducts();
 
-  if(!products) return 'No products found'
+  if (!products) return "No products found";
 
   return (
     <main className="bg-white">
       <MainSection products={products} />
-      <CategoriesSection products={products} />
+      <div className="mb-[168px] mt-[200px] tablet:mb-[98px] tablet:mt-[148px]">
+        <CategoriesSection products={products} />
+      </div>
       <ThirdSection />
       <FourthSection />
       <FifthSection />

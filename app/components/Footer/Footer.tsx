@@ -25,11 +25,11 @@ const getOptions = (delay: number) => {
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary pt-[75px] pb-[48px]">
+    <footer className="bg-secondary pt-[75px] pb-[48px] tablet:px-[40px] tablet:relative">
       <div className="max-w-[1110px] mx-auto relative">
         <span className="block absolute -top-[75px] left-0 w-[104px] h-[4px] bg-primary"></span>
-        <div className="flex items-center justify-between mb-[36px]">
-          <motion.div {...getOptions(0)}>
+        <div className="flex items-center justify-between mb-[36px] tablet:flex-col tablet:items-start">
+          <motion.div {...getOptions(0)} className="tablet:mb-[32px]">
             <Image
               src="/svg/logo.svg"
               alt="Audiophile Logo"
@@ -55,7 +55,7 @@ const Footer = () => {
         <div className="flex items-end justify-between mb-[56px]">
           <motion.p
             {...getOptions(6)}
-            className="text-white/[.5] text-[15px] leading-[25px] font-medium max-w-[530px]"
+            className="text-white/[.5] text-[15px] leading-[25px] font-medium max-w-[530px] tablet:max-w-[100%]"
           >
             Audiophile is an all in one stop to fulfill your audio needs. We are
             a small team of music lovers and sound specialists who are devoted
@@ -65,7 +65,7 @@ const Footer = () => {
 
           <motion.div
             {...getOptions(7)}
-            className="flex items-center gap-x-[16px] max-h-[24px]"
+            className="flex items-center gap-x-[16px] max-h-[24px] tablet:absolute tablet:bottom-0 tablet:right-0"
           >
             <Link href="">
               <FacebookIcon />

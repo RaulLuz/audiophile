@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import useMobile from "../hooks/useMobile";
 
 const getOptions = (delay: number) => {
   return {
@@ -18,9 +19,11 @@ const getOptions = (delay: number) => {
 };
 
 const DescriptiveSection = () => {
+  const {isMobile} = useMobile();
+
   return (
-    <section className="max-w-[1110px] mx-auto flex items-center justify-between mb-[200px]">
-      <div className="max-w-[445px]">
+    <section className="max-w-[1110px] mx-auto flex items-center justify-between mb-[200px] tablet:flex-col-reverse tablet:max-w-[689px]">
+      <div className="max-w-[445px] tablet:max-w-[573px] tablet:text-center flex flex-col items-center">
         <motion.h2
           {...getOptions(0)}
           className="text-[40px] font-bold tracking-[1.43px] leading-[44px] text-black uppercase mb-[32px]"
@@ -49,8 +52,9 @@ const DescriptiveSection = () => {
           type: "spring",
         }}
         viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+        className="tablet:mb-[63px]"
       >
-        <img src="/images/sixth-section.png" alt="Person using headphones" />
+        <img src={`/images/sixth-section${isMobile ? "-mobile" : ""}.png`} alt="Person using headphones" />
       </motion.div>
     </section>
   );

@@ -10,6 +10,7 @@ interface IStoreContext {
   setQuantity: Dispatch<SetStateAction<number>>;
   isCartOpen: boolean;
   setIsCartOpen: Dispatch<SetStateAction<boolean>>;
+  products: IProduct[];
 }
 
 export { IStoreContext, IStoreContextProvider };

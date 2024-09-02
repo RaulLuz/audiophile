@@ -11,11 +11,11 @@ const CategoriesSection = ({ products }: { products: IProduct[] }) => {
   );
 
   return (
-    <section className="flex items-center justify-between max-w-[1110px] mx-auto mt-[200px] mb-[168px]">
+    <div className="flex gap-x-[30px] items-center justify-center tablet:gap-x-[10px]">
       {sortedCategories.map((category, index) => (
-        <CategoryCard key={category} category={category} index={index}/>
+        <CategoryCard key={category} category={category} index={index} />
       ))}
-    </section>
+    </div>
   );
 };
 

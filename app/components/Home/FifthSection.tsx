@@ -1,11 +1,14 @@
 "use client";
 
+import useMobile from "@/app/hooks/useMobile";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const FifthSection = () => {
+  const {isMobile} = useMobile();
+
   return (
-    <motion.section className="max-w-[1110px] mx-auto flex items-center justify-between mb-[200px]">
+    <motion.section className="max-w-[1110px] mx-auto flex items-center justify-between mb-[200px] tablet:max-w-[689px] tablet:mb-[96px]">
       <motion.div
         initial={{ opacity: 0, translateX: -50 }}
         whileInView={{ opacity: 1, translateX: 0 }}
@@ -18,9 +21,9 @@ const FifthSection = () => {
         viewport={{ once: true, margin: "0px 0px -150px 0px" }}
       >
         <img
-          src="/assets//home/desktop/image-earphones-yx1.jpg"
+          src={`/assets/home/${isMobile ? "tablet" : "desktop"}/image-earphones-yx1.jpg`}
           alt="YX1 Earphones"
-          className="rounded-[8px]"
+          className="rounded-[8px] tablet:max-w-[339px]"
         />
       </motion.div>
 
@@ -34,7 +37,7 @@ const FifthSection = () => {
           damping: 20,
         }}
         viewport={{ once: true, margin: "0px 0px -150px 0px" }}
-        className="w-[540px] h-[320px] flex flex-col justify-center pl-[95px] rounded-[8px] bg-grey"
+        className="w-[540px] h-[320px] flex flex-col justify-center pl-[95px] rounded-[8px] bg-grey tablet:w-[339px] tablet:pl-[41px]"
       >
         <div className="text-[28px] font-bold uppercase text-black tracking-[2px] mb-[32px]">
           YX1 Earphones
