@@ -48,6 +48,7 @@ const ProductActions = ({ product }: { product: IProduct }) => {
             type: "spring",
           }}
           viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+          className="mobile:w-full"
         >
           <Image
             src={imageSrc}

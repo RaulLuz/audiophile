@@ -30,7 +30,7 @@ const DescriptiveSection = () => {
   return (
     hydrated && (
       <section className="max-w-[1110px] mx-auto flex items-center justify-between mb-[200px] tablet:flex-col-reverse tablet:max-w-[689px] mobile:mb-[120px]">
-        <div className="max-w-[445px] tablet:max-w-[573px] tablet:text-center flex flex-col items-center mobile:">
+        <div className="max-w-[445px] tablet:max-w-[573px] tablet:text-center flex flex-col items-center">
           <motion.h2
             {...getOptions(0)}
             className="text-[40px] font-bold tracking-[1.43px] leading-[44px] text-black uppercase mb-[32px] mobile:text-[28px] mobile:tracking-[1px] mobile:max-w-full mobile:leading-[35px]"

@@ -18,7 +18,9 @@ export default async function HeadphonesLayout({
       <div className="flex items-center justify-between max-w-[1110px] mx-auto mt-[200px] mb-[168px] tablet:justify-center">
         <CategoriesSection products={products} />
       </div>
-      <DescriptiveSection />
+      <div className="mobile:px-[24px]">
+        <DescriptiveSection />
+      </div>
     </section>
   );
 }

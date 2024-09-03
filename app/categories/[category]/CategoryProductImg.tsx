@@ -31,7 +31,7 @@ const CategoryProductImg = ({
         width={540}
         height={560}
         alt={product.name}
-        className="tablet:w-[689px] tablet:h-auto mobile:w-[88%]"
+        className="tablet:w-[689px] tablet:h-auto tablet:mx-auto mobile:w-[88%]"
       />
     </motion.div>
   );
