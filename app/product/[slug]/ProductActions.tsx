@@ -6,6 +6,7 @@ import AddToCart from "./AddToCart";
 import GoBackButton from "@/app/components/GoBackButton";
 import useMobile from "@/app/hooks/useMobile";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const ProductActions = ({ product }: { product: IProduct }) => {
   const { isMobile, isTablet } = useMobile();
@@ -15,21 +16,57 @@ const ProductActions = ({ product }: { product: IProduct }) => {
     setHydrated(true);
   }, []);
 
-  const imageSrc = hydrated ? (isMobile ? product.image.mobile : isTablet ? product.image.tablet : product.image.desktop) : product.image.desktop
+  const imageSrc = hydrated
+    ? isMobile
+      ? product.image.mobile
+      : isTablet
+      ? product.image.tablet
+      : product.image.desktop
+    : product.image.desktop;
 
   return (
     <section className="mb-[160px] tablet:mb-[120px]">
-      <GoBackButton />
+      <motion.div
+        initial={{ opacity: 0, translateY: -50 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+        transition={{
+          duration: 1,
+          delay: 3 * 0.1,
+          type: "spring",
+        }}
+        viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+      >
+        <GoBackButton />
+      </motion.div>
       <div className="flex items-center justify-between mb-[160px] tablet:gap-x-[69px] mobile:flex-col mobile:mb-[88px]">
-        <Image
-          src={imageSrc}
-          width={540}
-          height={560}
-          alt={product.name}
-          className="rounded-[8px] tablet:w-[281px] tablet:h-auto mobile:w-full mobile:mb-[32px]"
-        />
+        <motion.div
+          initial={{ opacity: 0, translateX: -50 }}
+          whileInView={{ opacity: 1, translateX: 0 }}
+          transition={{
+            duration: 1,
+            delay: 3 * 0.1,
+            type: "spring",
+          }}
+          viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+        >
+          <Image
+            src={imageSrc}
+            width={540}
+            height={560}
+            alt={product.name}
+            className="rounded-[8px] tablet:w-[281px] tablet:h-auto mobile:w-full mobile:mb-[32px]"
+          />
+        </motion.div>
 
-        <div className="max-w-[445.5px] mobile:max-w-full">
+        <motion.div
+          initial={{ opacity: 0, translateX: 50 }}
+          whileInView={{ opacity: 1, translateX: 0 }}
+          transition={{
+            duration: 1,
+            delay: 3 * 0.1,
+            type: "spring",
+          }}
+          viewport={{ once: true, margin: "0px 0px -150px 0px" }} className="max-w-[445.5px] mobile:max-w-full">
           {product.new && (
             <span className="tracking-[10px] uppercase text-[14px] text-primary font-normal mb-[16px] block tablet:text-[12px] tablet:tracking-[8.57px] mobile:text-[14px] mobile:mb-[24px]">
               New product
@@ -46,7 +83,7 @@ const ProductActions = ({ product }: { product: IProduct }) => {
           </div>
 
           <AddToCart product={product} />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

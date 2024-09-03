@@ -2,9 +2,24 @@
 
 import useMobile from "@/app/hooks/useMobile";
 import { IProduct } from "@/app/types/products";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+
+const getOptions = (delay: number) => {
+  return {
+    initial: { opacity: 0, translateY: -100 },
+    animate: { opacity: 1, translateY: 0 },
+    transition: {
+      duration: 0.1,
+      delay: delay * 0.2,
+      type: "spring",
+      stiffness: 260,
+      damping: 40,
+    },
+  };
+};
 
 const ProductRelated = ({ product }: { product: IProduct }) => {
   const relatedProducts = product.others;
@@ -23,8 +38,8 @@ const ProductRelated = ({ product }: { product: IProduct }) => {
       </h3>
 
       <div className="flex items-center justify-between tablet:gap-x-[11px] mobile:flex-col">
-        {relatedProducts.map(({ image, name, slug }) => (
-          <div key={slug} className="flex flex-col items-center mobile:mb-[56px] mobile:w-full">
+        {relatedProducts.map(({ image, name, slug }, index) => (
+          <motion.div {...getOptions(index)} key={slug} className="flex flex-col items-center mobile:mb-[56px] mobile:w-full">
             <Image
               src={
                 hydrated
@@ -51,7 +66,7 @@ const ProductRelated = ({ product }: { product: IProduct }) => {
             >
               See Product
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

@@ -1,19 +1,41 @@
+'use client'
+
 import { IProduct } from "@/app/types/products";
+import { motion } from "framer-motion";
 import React from "react";
 import Markdown from "react-markdown";
 
 const ProductFeatures = ({ product }: { product: IProduct }) => {
   return (
     <section className="flex justify-between mb-[160px] tablet:flex-col tablet:gap-y-[120px] tablet:mb-[120px] mobile:gap-y-[88px] mobile:mb-[88px]">
-      <div>
+      <motion.div
+        initial={{ opacity: 0, translateY: 50 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+        transition={{
+          duration: 1,
+          delay: 3 * 0.1,
+          type: "spring",
+        }}
+        viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+      >
         <h3 className="font-bold text-[32px] text-black tracking-[1.14px] leading-[36px] uppercase mb-[32px] mobile:text-[24px] mobile:mb-[24px]">
           Features
         </h3>
         <Markdown className="prose max-w-[635px] font-medium text-[15px] leading-[25px] text-[#00000080]">
           {product.features}
         </Markdown>
-      </div>
-      <div className="tablet:flex tablet:gap-x-[168px] mobile:flex-col">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, translateY: -50 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+        transition={{
+          duration: 1,
+          delay: 3 * 0.1,
+          type: "spring",
+        }}
+        viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+        className="tablet:flex tablet:gap-x-[168px] mobile:flex-col"
+      >
         <h3 className="font-bold text-[32px] text-black tracking-[1.14px] leading-[36px] uppercase mb-[32px] mobile:text-[24px] mobile:mb-[24px]">
           In the box
         </h3>
@@ -30,7 +52,7 @@ const ProductFeatures = ({ product }: { product: IProduct }) => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

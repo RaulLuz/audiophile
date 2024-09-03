@@ -64,8 +64,9 @@ const Footer = () => {
           </motion.p>
 
           <motion.div
+            style={{ transform: "translateX(-50%)" }}
             {...getOptions(7)}
-            className="flex items-center gap-x-[16px] max-h-[24px] tablet:absolute tablet:bottom-0 tablet:right-0 mobile:-bottom-[75px] mobile:right-[39%] mobile:transform mobile:-translate-x-1/2"
+            className="flex items-center gap-x-[16px] max-h-[24px] tablet:absolute tablet:bottom-0 tablet:right-0 mobile:-bottom-[75px] mobile:right-[39%] "
         
           >
             <Link href="">
