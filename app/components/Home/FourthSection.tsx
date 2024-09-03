@@ -12,8 +12,6 @@ const FourthSection = () => {
     ? "/assets/home/tablet/image-speaker-zx7.jpg"
     : "/assets/home/desktop/image-speaker-zx7.jpg";
 
-  console.log({ currentBackground });
-
   return (
     <motion.section
       initial={{ opacity: 0, translateX: 50 }}
@@ -25,7 +23,7 @@ const FourthSection = () => {
         damping: 20,
       }}
       viewport={{ once: true, margin: "0px 0px -150px 0px" }}
-      className={`max-w-[1110px] mx-auto w-full h-[320px] rounded-[8px] pl-[95px] flex items-center mb-[48px] tablet:w-auto tablet:pl-[62px] tablet:mb-[32px] tablet:max-w-[689px] mobile:bg-[length:100%_100%] mobile:bg-no-repeat mobile:max-w-[327px] mobile:pl-[24px]`}
+      className={`max-w-[1110px] mx-auto w-full h-[320px] rounded-[8px] pl-[95px] flex items-center mb-[48px] tablet:w-auto tablet:pl-[62px] tablet:mb-[32px] tablet:max-w-[689px] mobile:bg-[length:100%] mobile:bg-no-repeat mobile:max-w-full mobile:pl-[24px]`}
       style={{ backgroundImage: `url(${currentBackground})` }}
     >
       <div>

@@ -13,9 +13,9 @@ export default async function HeadphonesLayout({
   if (!products) return "No products found";
 
   return (
-    <main className="max-w-[1110px] mx-auto">
+    <main className="max-w-[1110px] mx-auto tablet:px-[39px] mobile:px-[24px]">
       {children}
-      <section className="flex items-center justify-between max-w-[1110px] mx-auto mt-[200px] mb-[168px]">
+      <section className="flex items-center justify-between max-w-[1110px] mx-auto mt-[200px] mb-[168px] tablet:mt-[172px] tablet:mb-[120px] tablet:justify-center mobile:mt-[116px]">
         <CategoriesSection products={products} />
       </section>
       <DescriptiveSection />

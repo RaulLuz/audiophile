@@ -1,22 +1,22 @@
 "use client";
 
+import { useStore } from "@/app/context/StoreContext";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const CategoryCard = ({
   category,
   index,
-  mobileHeader,
 }: {
   category: string;
   index: number;
-  mobileHeader?: boolean;
 }) => {
   const images = {
     headphones: "category-headphones.png",
     speakers: "category-speakers.png",
     earphones: "category-earphones.png",
   };
+  const { setIsMenuOpen } = useStore();
 
   return (
     <motion.div
@@ -31,6 +31,7 @@ const CategoryCard = ({
       }}
       viewport={{ once: true }}
       key={category}
+      onClick={() => setIsMenuOpen(false)}
     >
       <Link
         href={`/categories/${category}`}
@@ -40,7 +41,9 @@ const CategoryCard = ({
           src={`/images/${images[category as keyof typeof images]}`}
           alt={category}
           className={`absolute tablet:max-w-[140px] ${
-            category === "earphones" ? "-top-[60px] tablet:-top-[44px]" : "-top-[75px] tablet:-top-[55px]"
+            category === "earphones"
+              ? "-top-[60px] tablet:-top-[44px]"
+              : "-top-[75px] tablet:-top-[55px]"
           }`}
         />
 

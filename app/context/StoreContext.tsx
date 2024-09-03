@@ -14,6 +14,7 @@ export function StoreContextProvider({ children }: IStoreContextProvider) {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [quantity, setQuantity] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
@@ -38,6 +39,8 @@ export function StoreContextProvider({ children }: IStoreContextProvider) {
         setQuantity,
         isCartOpen,
         setIsCartOpen,
+        isMenuOpen,
+        setIsMenuOpen,
       }}
     >
       {children}

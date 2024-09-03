@@ -6,8 +6,8 @@ const CheckoutFields = ({ errors, register, formDataSchema }: any) => {
   type formData = z.infer<typeof formDataSchema>;
 
   return (
-    <div className="p-[48px] pt-[54px] rounded-[8px] bg-white max-w-[730px]">
-      <h2 className="text-[32px] font-bold tracking-[1.14px] leading-[36px] uppercase mb-[41px]">
+    <div className="p-[48px] pt-[54px] rounded-[8px] bg-white max-w-[730px] tablet:max-w-full tablet:mb-[32px] mobile:p-[24px]">
+      <h2 className="text-[32px] font-bold tracking-[1.14px] leading-[36px] uppercase mb-[41px] mobile:text-[28px] mobile:tracking-[1px] mobile:mb-[32px]">
         Checkout
       </h2>
 
@@ -23,7 +23,7 @@ const CheckoutFields = ({ errors, register, formDataSchema }: any) => {
                 key={input.id}
                 className={`${
                   input.id === "address" ? "w-full" : ""
-                } flex flex-col`}
+                } flex flex-col mobile:w-full`}
               >
                 <div className="flex justify-between">
                   <label
@@ -47,7 +47,7 @@ const CheckoutFields = ({ errors, register, formDataSchema }: any) => {
                   id={input.id}
                   {...register(input.id as keyof formData, { required: true })}
                   className={`h-[56px] ${
-                    input.id === "address" ? "w-full" : "w-[309px]"
+                    input.id === "address" ? "w-full" : "w-[309px] mobile:w-full"
                   } 
                   border 
                   ${

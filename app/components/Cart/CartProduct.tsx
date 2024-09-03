@@ -47,7 +47,7 @@ const CartProduct = ({
         </Link>
       </div>
       {isInsideCheckout ? (
-        <div className="-mt-[27px]">x{quantity}</div>
+        <div className="-mt-[27px] font-bold text-[15px] leading-[25px] text-[#00000080]">x{quantity}</div>
       ) : (
         <QuantitySelector
           isInsideCart

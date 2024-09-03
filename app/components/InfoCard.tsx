@@ -31,12 +31,13 @@ const InfoCard = ({
   href,
 }: InfoCardProps) => {
   const finalTitleSize =
-    textColor === "text-white" ? "text-[56px]" : "text-[40px]";
+    textColor === "text-white" ? "text-[56px] mobile:text-[36px]" : "text-[40px] mobile:text-[28px]";
   const finalTitleLeading =
     textColor === "text-white" ? "leading-[58px]" : "leading-[44px]";
+    const finalCardSize = cardSize == "w-[445px]" ? "w-[445px] mobile:w-[100%] mobile:mx-auto" : cardSize;
 
   return (
-    <div className={`${cardSize} tablet:flex tablet:flex-col tablet:items-center tablet:relative tablet:z-10`}>
+    <div className={`${finalCardSize} tablet:flex tablet:flex-col tablet:items-center tablet:relative tablet:z-10`}>
       {isNew && (
         <motion.span
           {...getOptions(0)}
@@ -47,13 +48,13 @@ const InfoCard = ({
       )}
       <motion.h2
         {...getOptions(1)}
-        className={`${finalTitleSize} ${textColor} font-bold uppercase tracking-[2px] ${finalTitleLeading} mb-[24px] tablet:text-center mobile:text-[36px] mobile:tracking-[1.29px] mobile:leading-[40px]`}
+        className={`font-bold uppercase tracking-[2px]  mb-[24px] tablet:text-center  mobile:tracking-[1.29px] mobile:leading-[40px] ${finalTitleSize} ${textColor} ${finalTitleLeading}`}
       >
         {title}
       </motion.h2>
       <motion.p
         {...getOptions(2)}
-        className={`${textColor == "text-white" ? "text-[#FFFFFFbf]" : ""} opacity-75 leading-[25px] text-[15px] mb-[40px] tablet:text-center mobile:max-w-[80%]`}
+        className={`${textColor == "text-white" ? "text-[#FFFFFFbf]" : "text-[#00000080]"} opacity-75 leading-[25px] text-[15px] mb-[40px] tablet:text-center mobile:max-w-[80%]`}
       >
         {description}
       </motion.p>

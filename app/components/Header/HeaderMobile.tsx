@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MenuItems from "./MenuItems";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -9,6 +9,7 @@ import { useStore } from "@/app/context/StoreContext";
 import { IProduct } from "@/app/types/products";
 import fetchProducts from "@/app/utils/fetchProducts";
 import CategoryCard from "../CategoriesSection/CategoryCard";
+import useMobile from "@/app/hooks/useMobile";
 
 const variants = {
   open: {
@@ -17,6 +18,17 @@ const variants = {
   },
   closed: {
     x: "-100%",
+    transition: { stiffness: 1000 },
+  },
+};
+
+const variantsTablet = {
+  open: {
+    y: 0,
+    transition: { stiffness: 10 },
+  },
+  closed: {
+    y: "-100%",
     transition: { stiffness: 1000 },
   },
 };
@@ -33,19 +45,30 @@ const variantsOverlay = {
 };
 
 const HeaderMobile = () => {
-  const { setIsCartOpen, products } = useStore();
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { setIsCartOpen, products, isMenuOpen, setIsMenuOpen } = useStore();
+  const { isTablet } = useMobile();
   const correctOrder = ["headphones", "speakers", "earphones"];
   const categories = [...new Set(products.map((product) => product.category))];
   const sortedCategories = correctOrder.filter((category) =>
     categories.includes(category)
   );
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   return (
     <>
       <header className="bg-black w-full sticky -top-[1px] z-50">
-        <div className="flex items-center justify-between max-w-[689px] mx-auto py-[32px] px-[24px] border-b border-white/10 relative">
+        <div className="flex items-center justify-between max-w-[689px] mx-auto py-[32px] px-[24px] border-b border-white/10 relative tablet:max-w-full tablet:px-[39px] mobile:px-[24px]">
           <Cart />
 
           <div className="flex items-center">
@@ -74,16 +97,11 @@ const HeaderMobile = () => {
       <motion.nav
         initial={false}
         animate={isMenuOpen ? "open" : "closed"}
-        variants={variants}
-        className="w-[100vw] h-[100vh] bg-white fixed top-[84.44px] left-0 max-w-[450px] pt-[90px] pb-[130px] flex flex-col items-center gap-y-[68px] px-[24px] overflow-y-auto z-30 tablet:flex-row tablet:max-w-[100%] tablet:h-auto mobile:flex-col tablet:px-[40px] tablet:justify-between tablet:pt-[108px] tablet:pb-[67px]"
+        variants={isTablet ? variantsTablet : variants}
+        className="w-[100vw] h-[100vh] bg-white fixed top-[84.44px] left-0 max-w-[450px] pt-[90px] pb-[130px] flex flex-col items-center gap-y-[68px] px-[24px] overflow-y-auto z-30 tablet:flex-row tablet:max-w-[100%] tablet:h-auto mobile:flex-col tablet:px-[40px] tablet:justify-between tablet:pt-[108px] tablet:pb-[67px] mobile:overflow-y-auto mobile:h-full mobile:pb-[117px]"
       >
         {sortedCategories.map((category, index) => (
-          <CategoryCard
-            key={category}
-            category={category}
-            index={index}
-            mobileHeader={true}
-          />
+          <CategoryCard key={category} category={category} index={index} />
         ))}
       </motion.nav>
       <motion.div

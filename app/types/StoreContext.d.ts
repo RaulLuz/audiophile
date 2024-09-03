@@ -11,6 +11,8 @@ interface IStoreContext {
   isCartOpen: boolean;
   setIsCartOpen: Dispatch<SetStateAction<boolean>>;
   products: IProduct[];
+  isMenuOpen: boolean;
+  setIsMenuOpen: Dispatch<SetStateAction<bol>>;
 }
 
 export { IStoreContext, IStoreContextProvider };

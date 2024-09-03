@@ -35,13 +35,13 @@ const Checkout = () => {
 
   return (
     <>
-      <section className="bg-[#F1F1F1] pb-[141px]">
+      <section className="bg-[#F1F1F1] pb-[141px] tablet:px-[39px] tablet:pb-[116px] mobile:px-[24px] mobile:pb-[97px]">
         <div className="max-w-[1110px] mx-auto">
           <GoBackButton />
 
           <form
             onSubmit={handleSubmit(sendFormData)}
-            className="flex gap-x-[30px]"
+            className="flex gap-x-[30px] tablet:flex-col"
           >
             <CheckoutFields
               register={register}

@@ -23,7 +23,7 @@ const PaymentDetails = ({ errors, register, formDataSchema }: any) => {
       <div
         className={`${
           selectedMethod === "cash" ? "" : "mb-[34px]"
-        } w-full flex gap-x-[16px] `}
+        } w-full flex gap-x-[16px] mobile:flex-col mobile:gap-y-[16px]`}
       >
         {paymentMethods.map((method) => (
           <button
@@ -52,7 +52,7 @@ const PaymentDetails = ({ errors, register, formDataSchema }: any) => {
         ))}
       </div>
       {selectedMethod === "e-money" ? (
-        <div className="w-full flex gap-x-[16px]">
+        <div className="w-full flex gap-x-[16px] mobile:flex-col mobile:gap-y-[16px]">
           {eMoneyFields.map((field) => (
             <div
               key={field.id}
@@ -71,7 +71,7 @@ const PaymentDetails = ({ errors, register, formDataSchema }: any) => {
                 id={field.id}
                 {...register(field.id as keyof formData, { required: true })}
                   className={`h-[56px] ${
-                    field.id === "address" ? "w-full" : "w-[309px]"
+                    field.id === "address" ? "w-full" : "w-[309px] mobile:w-full"
                   } 
                   border border-[#CFCFCF]
                   ${
@@ -85,7 +85,7 @@ const PaymentDetails = ({ errors, register, formDataSchema }: any) => {
           ))}
         </div>
       ) : (
-        <div className="flex items-center gap-x-[32px] mt-[34px]">
+        <div className="flex items-center gap-x-[32px] mt-[34px] mobile:flex-col mobile:gap-y-[16px]">
           <Image
             src="/svg/checkout.svg"
             alt="Checkout"

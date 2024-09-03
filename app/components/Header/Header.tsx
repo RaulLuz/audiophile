@@ -27,7 +27,7 @@ const getOptions = (delay: number) => {
 };
 
 const Header = () => {
-  const { productsInCart, setIsCartOpen, isCartOpen } = useStore();
+  const { productsInCart, setIsCartOpen, isCartOpen, isMenuOpen } = useStore();
   const { isTablet } = useMobile();
   const [isMounted, setIsMounted] = useState(false);
 
