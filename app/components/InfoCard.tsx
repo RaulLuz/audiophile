@@ -47,13 +47,13 @@ const InfoCard = ({
       )}
       <motion.h2
         {...getOptions(1)}
-        className={`${finalTitleSize} ${textColor} font-bold uppercase tracking-[2px] ${finalTitleLeading} mb-[24px] tablet:text-center`}
+        className={`${finalTitleSize} ${textColor} font-bold uppercase tracking-[2px] ${finalTitleLeading} mb-[24px] tablet:text-center mobile:text-[36px] mobile:tracking-[1.29px] mobile:leading-[40px]`}
       >
         {title}
       </motion.h2>
       <motion.p
         {...getOptions(2)}
-        className={`${textColor == "text-white" ? "text-[#FFFFFFbf]" : ""} opacity-75 leading-[25px] text-[15px] mb-[40px] tablet:text-center`}
+        className={`${textColor == "text-white" ? "text-[#FFFFFFbf]" : ""} opacity-75 leading-[25px] text-[15px] mb-[40px] tablet:text-center mobile:max-w-[80%]`}
       >
         {description}
       </motion.p>

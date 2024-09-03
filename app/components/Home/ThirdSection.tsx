@@ -5,12 +5,14 @@ import InfoCard from "../InfoCard";
 import useMobile from "@/app/hooks/useMobile";
 
 const ThirdSection = () => {
-  const { isMobile } = useMobile();
+  const { isTablet, isMobile } = useMobile();
   const currentImage = isMobile
+    ? "zx9-speaker-section-mobile.png"
+    : isTablet
     ? "zx9-speaker-section-tablet.png"
     : "zx9-speaker-section.png";
 
-  console.log({ isMobile });
+  console.log({ isTablet });
 
   return (
     <motion.section
@@ -23,7 +25,7 @@ const ThirdSection = () => {
         damping: 20,
       }}
       viewport={{ once: true, margin: "0px 0px -150px 0px" }}
-      className="max-w-[1110px] mx-auto bg-primary rounded-[8px] relative w-full h-[560px] mb-[48px] flex justify-end items-center pr-[95px] tablet:w-auto tablet:h-[720px] tablet:mb-[32px] tablet:max-w-[689px]"
+      className="max-w-[1110px] mx-auto bg-primary rounded-[8px] relative w-full h-[560px] mb-[48px] flex justify-end items-center pr-[95px] tablet:w-auto tablet:h-[720px] tablet:mb-[32px] tablet:max-w-[689px] mobile:max-w-[327px] mobile:h-[600px]"
     >
       <motion.img
         initial={{ opacity: 0, translateX: -50 }}
@@ -38,9 +40,9 @@ const ThirdSection = () => {
         viewport={{ once: true }}
         src={`/images/${currentImage}`}
         alt="ZX9 Speaker"
-        className="absolute left-0"
+        className="absolute left-0 mobile:top-0"
       />
-      <div className="relative tablet:absolute tablet:left-1/2 tablet:transform tablet:-translate-x-1/2 tablet:bottom-[64px]">
+      <div className="relative tablet:absolute tablet:left-1/2 tablet:transform tablet:-translate-x-1/2 tablet:bottom-[64px] mobile:bottom-[55px]">
         <InfoCard
           isNew={false}
           textColor="text-white"

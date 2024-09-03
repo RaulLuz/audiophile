@@ -9,13 +9,13 @@ import useMobile from "@/app/hooks/useMobile";
 
 const MainSection = ({ products }: { products: IProduct[] }) => {
   const mainProduct = products.find((product) => product.id === 4);
-  const { isMobile } = useMobile();
+  const { isMobile, isTablet } = useMobile();
 
   if (!mainProduct) return;
 
   return (
     <section className="bg-secondary">
-      <div className="max-w-[1110px] mx-auto flex items-center gap-x-[40px] tablet:justify-center tablet:h-[644px]">
+      <div className="max-w-[1110px] mx-auto flex items-center gap-x-[40px] tablet:justify-center tablet:h-[644px] mobile:h-[516px]">
         <InfoCard
           isNew={true}
           textColor="text-white"
@@ -35,14 +35,14 @@ const MainSection = ({ products }: { products: IProduct[] }) => {
             delay: 3 * 0.1,
             type: "spring",
           }}
-          className="tablet:absolute tablet:top-0 tablet:left-2/4 tablet:-translate-x-2/4 tablet:w-full"
+          className="tablet:absolute tablet:top-0 tablet:left-2/4 tablet:-translate-x-2/4 tablet:w-full mobile:max-h-[600px]"
         >
           <Image
-            src={`/images/${isMobile ? "home-main-product-mobile" : "home-main-product"}.png`}
+            src={`/images/${isMobile ? "home-main-product-mobile" : isTablet ? "home-main-product-tablet" : "home-main-product"}.png`}
             alt="XX99 Mark II Headphones"
             width={675}
             height={674}
-            className="tablet:w-full"
+            className="tablet:w-full mobile:max-h-[600px] mobile:max-w-[375px] mx-auto"
           />
         </motion.div>
       </div>

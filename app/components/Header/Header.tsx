@@ -28,7 +28,7 @@ const getOptions = (delay: number) => {
 
 const Header = () => {
   const { productsInCart, setIsCartOpen, isCartOpen } = useStore();
-  const { isMobile } = useMobile();
+  const { isTablet } = useMobile();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Header = () => {
     return null;
   }
 
-  return isMobile ? (
+  return isTablet ? (
     <HeaderMobile />
   ) : (
     <>

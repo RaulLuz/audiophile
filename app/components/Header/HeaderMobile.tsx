@@ -28,7 +28,7 @@ const variantsOverlay = {
   },
   closed: {
     opacity: 0,
-    visibility: "visible" as "visible",
+    visibility: "hidden" as "hidden",
   },
 };
 

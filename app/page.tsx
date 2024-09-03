@@ -15,7 +15,7 @@ export default async function Home() {
   return (
     <main className="bg-white">
       <MainSection products={products} />
-      <div className="mb-[168px] mt-[200px] tablet:mb-[98px] tablet:mt-[148px]">
+      <div className="mb-[168px] mt-[200px] tablet:mb-[98px] tablet:mt-[148px] mobile:mt-[92px] mobile:mb-[120px]">
         <CategoriesSection products={products} />
       </div>
       <ThirdSection />

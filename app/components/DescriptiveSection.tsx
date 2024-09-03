@@ -19,20 +19,20 @@ const getOptions = (delay: number) => {
 };
 
 const DescriptiveSection = () => {
-  const {isMobile} = useMobile();
+  const { isTablet, isMobile } = useMobile();
 
   return (
-    <section className="max-w-[1110px] mx-auto flex items-center justify-between mb-[200px] tablet:flex-col-reverse tablet:max-w-[689px]">
-      <div className="max-w-[445px] tablet:max-w-[573px] tablet:text-center flex flex-col items-center">
+    <section className="max-w-[1110px] mx-auto flex items-center justify-between mb-[200px] tablet:flex-col-reverse tablet:max-w-[689px] mobile:mb-[120px]">
+      <div className="max-w-[445px] tablet:max-w-[573px] tablet:text-center flex flex-col items-center mobile:">
         <motion.h2
           {...getOptions(0)}
-          className="text-[40px] font-bold tracking-[1.43px] leading-[44px] text-black uppercase mb-[32px]"
+          className="text-[40px] font-bold tracking-[1.43px] leading-[44px] text-black uppercase mb-[32px] mobile:text-[28px] mobile:tracking-[1px] mobile:max-w-[280px] mobile:leading-[35px]"
         >
           Bringing you the <span className="text-primary">best</span> audio gear
         </motion.h2>
         <motion.p
           {...getOptions(1)}
-          className="font-normal text-black/[.5] leading-[25px] text-[15px] max-w-[440px]"
+          className="font-normal text-black/[.5] leading-[25px] text-[15px] max-w-[440px] mobile:max-w-[317px]"
         >
           Located at the heart of New York City, Audiophile is the premier store
           for high end headphones, earphones, speakers, and audio accessories.
@@ -52,9 +52,12 @@ const DescriptiveSection = () => {
           type: "spring",
         }}
         viewport={{ once: true, margin: "0px 0px -150px 0px" }}
-        className="tablet:mb-[63px]"
+        className="tablet:mb-[63px] mobile:mb-[40px]"
       >
-        <img src={`/images/sixth-section${isMobile ? "-mobile" : ""}.png`} alt="Person using headphones" />
+        <img
+          src={`/images/sixth-section${isMobile ? "-mobile" :isTablet ? "-tablet" : ""}.png`}
+          alt="Person using headphones"
+        />
       </motion.div>
     </section>
   );
