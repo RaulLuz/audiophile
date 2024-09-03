@@ -21,19 +21,19 @@ const QuantitySelector = ({ isInsideCart, product }: IQuantitySelector) => {
               if (index === currentProductIndex) {
                 const updatedQuantity = item.quantity + operation;
                 if (updatedQuantity <= 0) {
-                  return null; // Remove o item do array
+                  return null;
                 } else {
                   return { ...item, quantity: updatedQuantity };
                 }
               }
               return item;
             })
-            .filter(Boolean); // Remove os itens nulos do array
+            .filter(Boolean);
           return updatedProducts;
         } else if (operation === 1) {
           return [...prev, { product, quantity: 1 }];
         }
-        return prev; // Retorna o array original se nenhuma operação for realizada
+        return prev;
       });
     }
 

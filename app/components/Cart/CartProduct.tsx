@@ -1,4 +1,4 @@
-import { IProduct, IProductInCart } from "@/app/types/products";
+import { IProduct } from "@/app/types/products";
 import Image from "next/image";
 import Link from "next/link";
 import QuantitySelector from "../QuantitySelector";

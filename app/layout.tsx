@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Providers from "./providers";
-import Cart from "./components/Cart/Cart";
 import NextTopLoader from "nextjs-toploader";
 const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "700"] });
 

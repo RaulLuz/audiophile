@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
 import { useStore } from "../../context/StoreContext";
 import { useState, useEffect } from "react";
 import Cart from "../Cart/Cart";

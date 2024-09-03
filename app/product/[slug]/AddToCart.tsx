@@ -3,7 +3,7 @@ import { useStore } from "@/app/context/StoreContext";
 import { IProductInCart, IProduct } from "@/app/types/products";
 
 const AddToCart = ({ product }: { product: IProduct }) => {
-  const { setProductsInCart, productsInCart, quantity } = useStore();
+  const { setProductsInCart, quantity } = useStore();
 
   const handleAddProductToCart = () => {
     setProductsInCart((prev: IProductInCart[]) => {

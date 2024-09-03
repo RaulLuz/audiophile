@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
-import MenuItems from "./MenuItems";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Logo from "./Logo";
 import Cart from "../Cart/Cart";
 import CartIcon from "./CartIcon";
 import { useStore } from "@/app/context/StoreContext";
-import { IProduct } from "@/app/types/products";
-import fetchProducts from "@/app/utils/fetchProducts";
 import CategoryCard from "../CategoriesSection/CategoryCard";
 import useMobile from "@/app/hooks/useMobile";
 

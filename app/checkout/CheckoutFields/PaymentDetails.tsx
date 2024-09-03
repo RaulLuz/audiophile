@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { paymentMethods, eMoneyFields } from "./fields";
 import Image from "next/image";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const PaymentDetails = ({ errors, register, formDataSchema }: any) => {
