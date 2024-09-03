@@ -46,7 +46,7 @@ const variantsOverlay = {
 
 const HeaderMobile = () => {
   const { setIsCartOpen, products, isMenuOpen, setIsMenuOpen } = useStore();
-  const { isTablet } = useMobile();
+  const { isTablet, isMobile } = useMobile();
   const correctOrder = ["headphones", "speakers", "earphones"];
   const categories = [...new Set(products.map((product) => product.category))];
   const sortedCategories = correctOrder.filter((category) =>
@@ -97,7 +97,7 @@ const HeaderMobile = () => {
       <motion.nav
         initial={false}
         animate={isMenuOpen ? "open" : "closed"}
-        variants={isTablet ? variantsTablet : variants}
+        variants={isMobile ? variants : isTablet ? variantsTablet : variants}
         className="w-[100vw] h-[100vh] bg-white fixed top-[84.44px] left-0 max-w-[450px] pt-[90px] pb-[130px] flex flex-col items-center gap-y-[68px] px-[24px] overflow-y-auto z-30 tablet:flex-row tablet:max-w-[100%] tablet:h-auto mobile:flex-col tablet:px-[40px] tablet:justify-between tablet:pt-[108px] tablet:pb-[67px] mobile:overflow-y-auto mobile:h-full mobile:pb-[117px]"
       >
         {sortedCategories.map((category, index) => (
