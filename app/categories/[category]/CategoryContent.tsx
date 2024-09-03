@@ -1,8 +1,7 @@
-import useMobile from "@/app/hooks/useMobile";
 import InfoCard from "../../components/InfoCard";
 import { IProduct } from "../../types/products";
 import fetchProducts from "../../utils/fetchProducts";
-import Image from "next/image";
+import CategoryProductImg from "./CategoryProductImg";
 
 const CategoryContent = async ({ category }: { category: string }) => {
   const products: IProduct[] = await fetchProducts();
@@ -27,13 +26,8 @@ const CategoryContent = async ({ category }: { category: string }) => {
             index % 2 === 0 ? "" : "flex-row-reverse"
           }`}
         >
-          <Image
-            src={product.categoryImage.desktop}
-            width={540}
-            height={560}
-            alt={product.name}
-            className="tablet:w-[689px] tablet:h-auto mobile:w-[88%]"
-          />
+          <CategoryProductImg product={product} index={index} />
+
           <div className="tablet:mt-[52px] ">
             <InfoCard
               key={product.id}
