@@ -3,11 +3,17 @@
 import useMobile from "@/app/hooks/useMobile";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const FifthSection = () => {
   const { isTablet, isMobile } = useMobile();
+  const [hydrated, setHydrated] = useState(false);
 
-  return (
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  return hydrated && (
     <motion.section className="max-w-[1110px] mx-auto flex items-center justify-between mb-[200px] tablet:max-w-[689px] tablet:mb-[96px] mobile:flex-col mobile:max-w-full mobile:mb-[120px]">
       <motion.div
         initial={{ opacity: 0, translateX: -50 }}

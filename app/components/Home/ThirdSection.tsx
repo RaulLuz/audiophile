@@ -3,16 +3,23 @@
 import { motion } from "framer-motion";
 import InfoCard from "../InfoCard";
 import useMobile from "@/app/hooks/useMobile";
+import { useState, useEffect } from "react";
 
 const ThirdSection = () => {
   const { isTablet, isMobile } = useMobile();
+  const [hydrated, setHydrated] = useState(false);
   const currentImage = isMobile
     ? "zx9-speaker-section-mobile.png"
     : isTablet
     ? "zx9-speaker-section-tablet.png"
     : "zx9-speaker-section.png";
 
-  return (
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  return hydrated && (
     <motion.section
       initial={{ opacity: 0, translateX: -50 }}
       whileInView={{ opacity: 1, translateX: 0 }}

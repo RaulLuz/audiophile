@@ -1,7 +1,7 @@
 "use client";
 
 import { IProduct } from "@/app/types/products";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InfoCard from "../InfoCard";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -11,9 +11,15 @@ const MainSection = ({ products }: { products: IProduct[] }) => {
   const mainProduct = products.find((product) => product.id === 4);
   const { isMobile, isTablet } = useMobile();
 
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
   if (!mainProduct) return;
 
-  return (
+  return hydrated && (
     <section className="bg-secondary">
       <div className="max-w-[1110px] mx-auto flex items-center gap-x-[40px] tablet:justify-center tablet:h-[644px] mobile:h-[516px]">
         <InfoCard
@@ -38,7 +44,13 @@ const MainSection = ({ products }: { products: IProduct[] }) => {
           className="tablet:absolute tablet:top-0 tablet:left-2/4 tablet:-translate-x-2/4 tablet:w-full mobile:max-h-[600px]"
         >
           <Image
-            src={`/images/${isMobile ? "home-main-product-mobile" : isTablet ? "home-main-product-tablet" : "home-main-product"}.png`}
+            src={`/images/${
+              isMobile
+                ? "home-main-product-mobile"
+                : isTablet
+                ? "home-main-product-tablet"
+                : "home-main-product"
+            }.png`}
             alt="XX99 Mark II Headphones"
             width={675}
             height={674}

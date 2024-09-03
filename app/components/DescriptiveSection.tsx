@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import useMobile from "../hooks/useMobile";
+import { useState, useEffect } from "react";
 
 const getOptions = (delay: number) => {
   return {
@@ -20,8 +21,13 @@ const getOptions = (delay: number) => {
 
 const DescriptiveSection = () => {
   const { isTablet, isMobile } = useMobile();
+  const [hydrated, setHydrated] = useState(false);
 
-  return (
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  return hydrated && (
     <section className="max-w-[1110px] mx-auto flex items-center justify-between mb-[200px] tablet:flex-col-reverse tablet:max-w-[689px] mobile:mb-[120px]">
       <div className="max-w-[445px] tablet:max-w-[573px] tablet:text-center flex flex-col items-center mobile:">
         <motion.h2

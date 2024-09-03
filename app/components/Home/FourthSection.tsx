@@ -3,16 +3,23 @@
 import useMobile from "@/app/hooks/useMobile";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const FourthSection = () => {
   const { isTablet, isMobile } = useMobile();
+  const [hydrated, setHydrated] = useState(false);
+
   const currentBackground = isMobile
     ? "/assets/home/mobile/image-speaker-zx7.jpg"
     : isTablet
     ? "/assets/home/tablet/image-speaker-zx7.jpg"
     : "/assets/home/desktop/image-speaker-zx7.jpg";
 
-  return (
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  return hydrated && (
     <motion.section
       initial={{ opacity: 0, translateX: 50 }}
       whileInView={{ opacity: 1, translateX: 0 }}
